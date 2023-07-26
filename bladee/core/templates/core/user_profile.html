@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h1 class="text-white text-3xl mb-12 max-[768px]:pt-8 max-[768px]:text-[25px]">Your username is <strong>{{ user_profile.user.username }}</strong></h1>
+  <h1 class="text-3xl text-center text-white pb-8 mb-4 max-[768px]:text-[20px]">THE ALBUMS YOU LIKED</h1>
+  <div class="flex flex-wrap justify-between ml-28 max-[768px]:ml-2">
+    {% for album in liked_albums %}
+      <div class="w-1/4 mb-10  max-[768px]:w-[200px] max-[768px]:text-center max-[768px]:ml-[55px]">
+        <a href="{% url 'album_detail' pk=album.pk %}">
+          <img class="h-52 w-52 object-cover rounded-t-lg mb-3" src="{{ album.cover.url }}" alt="{{ album.title }}" >
+          <p class="text-white text-xl">{{ album.title }}</p>
+        </a>
+      </div>
+    {% empty %}
+      <p class="text-white">No liked albums yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

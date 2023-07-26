@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Discography{% endblock %}
+
+{% block content %}
+
+<h1 class="text-3xl text-center text-white pb-8 max-[768px]:pt-10 max-[768px]:text-[25px]">CHOOSE AN ALBUM YOU WANT TO LISTEN</h1>
+<div class="flex flex-wrap justify-between">
+  {% for album in albums %}
+  <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 p-4">
+    <div class="bg-white rounded-lg shadow-lg hover:bg-gray-200">
+      <a href="{% url 'album_detail' pk=album.pk %}"><img class="h-48 w-full object-cover rounded-t-lg" src="{{ album.cover.url }}" alt="{{ album.title }}" ></a>
+      <div class="px-6 py-4 max-[768px]:px-2 max-[768px]:py-2">
+        <div class="font-bold text-xl mb-2 text-black max-[768px]:text-[16px]">
+          {{ album.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

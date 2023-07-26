@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Biography{% endblock %}
+
+{% block content %}
+
+<ul class="flex justify-center flex-col">
+  {% for i in bio_information %}
+  <li class="text-center">
+    <h2 class="text-3xl mb-10 max-[768px]:pt-0 text-[#953B3B] max-[768px]:text-[20px] max-[768px]:mb-0" >{{ i.title | default:"" }}</h2>
+  {% if i.image or i.video %}
+      {% if i.image %}
+        <img class="mx-auto mb-11 max-[768px]:pt-10" src="{{ i.image.url }}" alt="{{ i.title }}" width="550" height="550">
+        {% endif %}
+      {% if i.video %}
+        <video class="mx-auto mb-11" src="{{ i.video.url }}" controls width="400" height="400"></video>
+    {% endif %}
+  {% endif %}
+    <p class="text-white text-2xl mb-5 max-[768px]:text-[16px] max-[768px]:mb-5">{{ i.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<ul class="flex justify-center flex-col">
+  {% for i in information %}
+  <li class="text-center">
+    <h2 class="text-3xl text-[#953B3B] mb-10 max-[768px]:text-[20px] max-[768px]:pt-0">{{ i.title }}</h2>
+  {% if i.image or i.video %}
+      {% if i.image %}
+        <img class="mx-auto mb-11 rounded-lg" src="{{ i.image.url }}" alt="{{ i.title }}" width="550" height="550">
+        {% endif %}
+      {% if i.video %}
+        <video class="mx-auto mb-11 focus:outline-none" src="{{ i.video.url }}" controls width="250" height="300"></video>
+    {% endif %}
+  {% endif %}
+    <p class="text-gray-200 text-2xl mb-16 max-[768px]:text-[16px] max-[768px]:mb-3">{{ i.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

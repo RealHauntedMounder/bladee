@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Add Comment{% endblock %}
+
+{% block content %}
+
+
+<h1 class="text-3xl text-white mb-10 max-[768px]:mt-8">
+  Add Comment
+</h1>
+
+<div class="container m5">
+
+  <form action="" method="post" class="max-[768px]:w-64]">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="submit" name="Submit" class="w-64 py-4 px-6 rounded-xl mt-5 bg-red-600 max-[768px]:text-[12px]  max-[768px]:w-32 hover:bg-red-700">
+  </form>
+</div>
+{% endblock %}
